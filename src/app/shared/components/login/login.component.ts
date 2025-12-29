@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../../../core/auth/auth.service';
 import { LoaderService } from '../../../core/services/loader.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule ],
@@ -16,6 +17,7 @@ private _authService = inject(AuthService);
 private _cookieService = inject(CookieService);
 _loaderService = inject(LoaderService);
 private _router = inject(Router);
+private _tostar = inject(ToastrService);
 
 // login controller
 loginForm : FormGroup = new FormGroup({
@@ -36,6 +38,9 @@ next : (res)=>{
 this._cookieService.set('token' ,`3b8ny__${res.token}`);
 this._authService.isLoadedUser.set(true);
 this._router.navigate(['/home']);
+},
+error : (err)=>{
+this._tostar.error(err.message);
 }
 })
 
