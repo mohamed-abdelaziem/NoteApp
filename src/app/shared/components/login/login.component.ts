@@ -37,10 +37,11 @@ this._authService.login(this.loginForm.value).subscribe({
 next : (res)=>{
 this._cookieService.set('token' ,`3b8ny__${res.token}`);
 this._authService.isLoadedUser.set(true);
+this._tostar.success('Welcome Back 😊')
 this._router.navigate(['/home']);
 },
 error : (err)=>{
-this._tostar.error(err.message);
+this._tostar.error(err.error.msg);
 }
 })
 
