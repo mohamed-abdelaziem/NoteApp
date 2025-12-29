@@ -51,7 +51,7 @@
           >
         </li>
 
-        <li>
+        <li [class.!hidden]="_authService.isLoadedUser()">
           <a
              routerLink="/login"
             routerLinkActive="bg-main text-white"
@@ -60,9 +60,9 @@
           >
         </li>
 
-        <li >
+        <li [class.!hidden]="_authService.isLoadedUser()">
           <a
-     
+            
             routerLink="/register"
             routerLinkActive="bg-main text-white"
             class="block py-2 px-3 text-black rounded  p-2  "
